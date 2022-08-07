@@ -1,0 +1,18 @@
+from os import environ
+from os.path import expanduser
+from sys import path
+from site import addsitedir
+
+addsitedir('/PATH/TO/venv_qrcode/lib/python3.7/site-packages')  # NOQA
+
+path.append('/PATH/TO/www')
+path.append('/PATH/TO/www/qrcode')
+
+activate_env = expanduser('/PATH/TO/venv_qrcode/bin/activate_this.py')  # NOQA
+exec(compile(open(activate_env, 'rb').read(), activate_env, 'exec'),
+     dict(__file__=activate_env))
+
+from django.core.wsgi import get_wsgi_application  # NOQA
+
+environ.setdefault('DJANGO_SETTINGS_MODULE', 'qrcode.settings')
+application = get_wsgi_application()

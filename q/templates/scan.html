@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <div class="d-flex flex-column h-100 justify-content-center align-items-center" style="font-size: 2rem; text-transform: uppercase">
+    <div class="d-flex flex-row mb-4">
+      {% for code_char in displayed_code %}
+        <div class="mr-2{% if code_char.revealed_by_this_scan %} text-warning{% endif %}">{{ code_char.char }}</div>
+      {% endfor %}
+    </div>
+    <div class="text-center">
+      {% if has_new_character_been_revealed %}
+        Vous venez de débloquer une <span class="text-warning">nouvelle lettre</span>.
+      {% else %}
+        Quelqu'un a déjà scanné ce code.<br>Vous ne débloquez pas de nouvelle lettre.
+      {% endif %}
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,6 @@
+*.pyc
+qrcode/settings.py
+qrcode/wsgi.py
+*/migrations/*
+*/__pycache__/*
+db.sqlite3
